@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta name="title" content="JTech - Privacy Policy" />
     <meta
@@ -22,212 +22,319 @@
       referrerpolicy="no-referrer"
     />
     <style>
-      img {
+      img { pointer-events: none; }
+      .text-glow { text-shadow: 0 0 8px rgba(59,130,246,.8), 0 0 20px rgba(59,130,246,.5); }
+
+      .policy-wrap { direction: ltr; }
+      .policy-section { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #1f2937; }
+      .policy-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+      .page-title { font-size: 2.5rem; font-weight: 700; color: #fff; }
+      .policy-h2 { font-size: 1.5rem; font-weight: 700; color: #fff; text-align: left; margin-bottom: .75rem; }
+      .policy-h3 { font-size: 1.125rem; font-weight: 600; color: #e5e7eb; text-align: left; margin-top: 1rem; margin-bottom: .5rem; }
+
+      .policy-content p, .policy-content li { color: #9ca3af; line-height: 1.85; margin-bottom: .75rem; }
+      .policy-content ul { list-style: disc; padding-left: 1.25rem; margin-bottom: .75rem; }
+      .policy-content ol { list-style: decimal; padding-left: 1.25rem; margin-bottom: .75rem; }
+      .policy-content a { color: #60a5fa; text-decoration: underline; }
+      .policy-content a:hover { color: #3b82f6; }
+
+      .chip { border: 1px solid #1f2937; background: #0b1220; border-radius: 9999px; padding: .4rem .9rem; color: #cbd5e1; white-space: nowrap; }
+      .chip:hover { border-color: #334155; color: #fff; }
+
+      .bg-grid::before {
+        content: "";
+        position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+        background-size: 24px 24px, 24px 24px;
         pointer-events: none;
       }
-      .text-glow {
-        text-shadow: 0 0 8px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.5);
+
+      .hero { padding-top: 10rem; padding-bottom: 8rem; }
+
+      /* Transparent, auto-hiding scrollbar */
+      /* WebKit (Chrome/Edge/Safari) */
+      body::-webkit-scrollbar { width: 8px; }
+      body::-webkit-scrollbar-track { background: transparent; }
+      body::-webkit-scrollbar-thumb {
+        background-color: transparent;              /* hidden by default */
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        backdrop-filter: blur(4px);
+        transition: background-color .18s ease;
       }
-      .policy-section {
-        margin-bottom: 2rem; /* Generous spacing between main sections */
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #374151;
+      body.show-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(120,120,120,0.32);   /* visible while scrolling */
       }
-      .policy-section:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
+      body.show-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(120,120,120,0.5);
       }
-      .policy-title {
-        font-size: 1.875rem;
-        font-weight: 600;
-        color: #ffffff;
-        margin-bottom: 1rem;
-        text-align: center;
+
+      /* Firefox */
+      body {
+        scrollbar-width: thin;                      /* slim */
+        scrollbar-color: transparent transparent;   /* hidden by default */
+        transition: scrollbar-color .18s ease;
       }
-      .policy-content p,
-      .policy-content li {
-        color: #9ca3af;
-        margin-bottom: 1rem; /* Increased spacing below paragraphs and list items */
-        line-height: 1.75;
-      }
-      .policy-content h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #ffffff;
-        margin-top: 2rem; /* Generous spacing above subsection titles */
-        margin-bottom: 1rem; /* Generous spacing below subsection titles */
-      }
-      .policy-content ul {
-        margin-left: 1.5rem;
-        list-style-type: disc;
-        list-style-position: outside;
-        margin-bottom: 1rem; /* Increased spacing below list */
-      }
-      .policy-content li {
-        margin-left: 1.5rem;
-      }
-      .policy-link {
-        color: #3b82f6;
-        text-decoration: underline;
-      }
-      .policy-link:hover {
-        color: #2563eb;
+      body.show-scrollbar {
+        scrollbar-color: rgba(120,120,120,0.4) transparent; /* visible while scrolling */
       }
     </style>
   </head>
   <body class="bg-black">
-    <!-- Header will be injected here by JavaScript -->
     <div id="header-container"></div>
 
-    <div class="bg-gradient-dark">
-      <!-- Hero Section -->
-      <div class="relative isolate overflow-hidden py-24">
-        <img src="/img/phonegrid.png" alt="" class="opacity-20 absolute inset-0 -z-10 size-full object-cover" />
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
-            <div class="text-center">
-              <h1 class="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl text-glow">
-                Privacy Policy
-              </h1>
-              <p class="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">
-                How JTech handles your information.
-              </p>
-            </div>
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden hero">
+      <img src="/img/phonegrid.png" alt="" class="opacity-20 absolute inset-0 -z-10 w-full h-full object-cover" />
+      <div class="bg-grid absolute inset-0 -z-10"></div>
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-4xl">
+          <div class="text-center">
+            <h1 class="page-title text-glow">Privacy Policy</h1>
+            <p class="mt-3 text-base text-gray-400">How JTech handles your information.</p>
+            <p class="mt-1 text-sm text-gray-500">Last Updated: August 28, 2025</p>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Policy Content Section -->
-      <section class="bg-black py-24 sm:py-32">
-        <div class="mx-auto max-w-5xl px-6 lg:px-8">
-          <div class="policy-section">
-            <h2 class="policy-title">JTech Privacy Policy</h2>
-            <p class="text-sm font-semibold text-gray-400 text-center mb-6">Last Updated: [Insert Date]</p>
+    <!-- Sticky nav -->
+    <nav class="sticky top-0 z-20 backdrop-blur bg-black/60 border-b border-slate-800">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-3 overflow-x-auto">
+        <div class="flex gap-2">
+          <a href="#scope" class="chip">Scope</a>
+          <a href="#collect" class="chip">Data We Collect</a>
+          <a href="#use" class="chip">How We Use Data</a>
+          <a href="#legal" class="chip">Legal Bases</a>
+          <a href="#share" class="chip">Sharing</a>
+          <a href="#cookies" class="chip">Cookies</a>
+          <a href="#retention" class="chip">Retention</a>
+          <a href="#security" class="chip">Security</a>
+          <a href="#rights" class="chip">Your Rights</a>
+          <a href="#children" class="chip">Children’s Privacy</a>
+          <a href="#intl" class="chip">International Transfers</a>
+          <a href="#dnt" class="chip">Do Not Track</a>
+          <a href="#changes" class="chip">Changes</a>
+          <a href="#contact" class="chip">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Policy Content -->
+    <main class="bg-black py-10 sm:py-12">
+      <div class="mx-auto max-w-5xl px-6 lg:px-8 policy-wrap">
+
+        <section id="scope" class="policy-section">
+          <h2 class="policy-h2">1. Scope and Who We Are</h2>
+          <div class="policy-content">
             <p>
-              Welcome to JTech Forums ("JTech", "we", "us", or "our"). We are committed to protecting your privacy and ensuring the security of your
-              personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you visit our website
-              (jtechforums.org) and use our services.
+              JTech Forums (“JTech”, “we”, “us”, “our”) operates <span dir="ltr">jtechforums.org</span> and related services.
+              This Privacy Policy explains how we collect, use, share, and protect personal information when you use the site and community.
             </p>
           </div>
+        </section>
 
-          <div class="policy-section">
-            <h3 class="policy-title">1. Information We Collect</h3>
-            <div class="policy-content">
-              <p>We may collect the following types of information:</p>
-              <ul>
-                <li>
-                  <strong>Information You Provide Directly:</strong> This includes information you provide when you register for an account,
-                  post on the forum, contact us, or participate in surveys. This may include your username, email address, IP address, and any
-                  content you submit.
-                </li>
-                <li>
-                  <strong>Automatically Collected Information:</strong> When you visit our website, we may automatically collect certain data, such
-                  as your IP address, browser type, operating system, referring URLs, and browsing activity through cookies and similar technologies.
-                </li>
-                <li>
-                  <strong>Information from Third Parties:</strong> We may receive information about you from third-party services, such as linked
-                  social media accounts, if you choose to connect them.
-                </li>
-              </ul>
-            </div>
+        <section id="collect" class="policy-section">
+          <h2 class="policy-h2">2. Information We Collect</h2>
+          <div class="policy-content">
+            <h3 class="policy-h3">a. Information You Provide</h3>
+            <ul>
+              <li>Account details: username, email, encrypted password, profile picture, bio.</li>
+              <li>Community content: posts, comments, attachments, votes, reports.</li>
+              <li>Contact: support requests and communication preferences.</li>
+            </ul>
+            <h3 class="policy-h3">b. Information Collected Automatically</h3>
+            <ul>
+              <li>Logs: IP, browser type, OS, referrer, timestamps.</li>
+              <li>Site usage: page views, clicks, session duration, technical metrics.</li>
+              <li>Cookies & similar technologies.</li>
+            </ul>
+            <h3 class="policy-h3">c. Third-Party Sources</h3>
+            <p>
+              If you connect social or external accounts, we may receive minimal data necessary to operate the integration.
+            </p>
           </div>
+        </section>
 
-          <div class="policy-section">
-            <h3 class="policy-title">2. How We Use Your Information</h3>
-            <div class="policy-content">
-              <p>We use the collected information for the following purposes:</p>
-              <ul>
-                <li>To provide, maintain, and improve our website and services.</li>
-                <li>To personalize your experience and deliver relevant content and recommendations.</li>
-                <li>To communicate with you, respond to inquiries, and provide customer support.</li>
-                <li>To process your forum activity, including posts and profile information.</li>
-                <li>To send you periodic emails, newsletters, or promotional materials (you can opt-out at any time).</li>
-                <li>To enforce our terms of service and prevent fraudulent or unauthorized activity.</li>
-                <li>To comply with legal obligations.</li>
-              </ul>
-            </div>
+        <section id="use" class="policy-section">
+          <h2 class="policy-h2">3. How We Use Information</h2>
+          <div class="policy-content">
+            <ul>
+              <li>Provide, maintain, and improve services.</li>
+              <li>Personalize your experience.</li>
+              <li>Respond to support and enforce forum rules.</li>
+              <li>Send account updates and system alerts.</li>
+              <li>Marketing (with consent, where required).</li>
+              <li>Comply with legal obligations.</li>
+            </ul>
           </div>
+        </section>
 
-          <div class="policy-section">
-            <h3 class="policy-title">3. Cookies and Tracking Technologies</h3>
-            <div class="policy-content">
-              <p>
-                We use cookies and similar tracking technologies to enhance your browsing experience, analyze website traffic, and understand user
-                behavior. You can manage your cookie preferences through your browser settings.
-              </p>
-            </div>
+        <section id="legal" class="policy-section">
+          <h2 class="policy-h2">4. Legal Bases (GDPR)</h2>
+          <div class="policy-content">
+            <ul>
+              <li>Contractual necessity – operate your account.</li>
+              <li>Legitimate interests – site security, prevention of abuse, improvement.</li>
+              <li>Consent – cookies, optional marketing.</li>
+              <li>Legal obligations – keeping required records.</li>
+            </ul>
           </div>
+        </section>
 
-          <div class="policy-section">
-            <h3 class="policy-title">4. Third-Party Services</h3>
-            <div class="policy-content">
-              <p>
-                Our website may contain links to third-party websites or services. We are not responsible for the privacy practices or content of
-                these third parties. We encourage you to read their privacy policies.
-              </p>
-            </div>
+        <section id="share" class="policy-section">
+          <h2 class="policy-h2">5. Sharing & Disclosure</h2>
+          <div class="policy-content">
+            <ul>
+              <li>Vendors/service providers under confidentiality.</li>
+              <li>Law enforcement or legal obligations.</li>
+              <li>Business transfers (merger/acquisition).</li>
+              <li>Content you post publicly is visible to all.</li>
+            </ul>
           </div>
+        </section>
 
-          <div class="policy-section">
-            <h3 class="policy-title">5. Data Security</h3>
-            <div class="policy-content">
-              <p>
-                We implement reasonable security measures to protect your personal information from unauthorized access, disclosure, alteration,
-                or destruction. However, no method of transmission over the internet or electronic storage is 100% secure.
-              </p>
-            </div>
+        <section id="cookies" class="policy-section">
+          <h2 class="policy-h2">6. Cookies & Tracking</h2>
+          <div class="policy-content">
+            <p>
+              We use cookies for login, security, performance, and analytics. You can manage cookies in browser settings; disabling may affect site functions.
+            </p>
           </div>
+        </section>
 
-          <div class="policy-section">
-            <h3 class="policy-title">6. Your Privacy Choices</h3>
-            <div class="policy-content">
-              <p>
-                You have the right to access, update, or delete your personal information. You can also opt-out of receiving promotional
-                communications. Please contact us to exercise these rights.
-              </p>
-            </div>
+        <section id="retention" class="policy-section">
+          <h2 class="policy-h2">7. Data Retention</h2>
+          <div class="policy-content">
+            <p>
+              We retain data as long as necessary for stated purposes and legal requirements. You may request deletion; some records may remain for compliance.
+            </p>
           </div>
+        </section>
 
-          <div class="policy-section">
-            <h3 class="policy-title">7. Changes to This Privacy Policy</h3>
-            <div class="policy-content">
-              <p>
-                We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on
-                this page and updating the "Last Updated" date.
-              </p>
-            </div>
+        <section id="security" class="policy-section">
+          <h2 class="policy-h2">8. Security</h2>
+          <div class="policy-content">
+            <p>
+              We use reasonable security measures (encryption, access controls, backups). However, no online system is 100% secure.
+            </p>
           </div>
+        </section>
 
-          <div class="policy-section">
-            <h3 class="policy-title">8. Contact Us</h3>
-            <div class="policy-content">
-              <p>
-                If you have any questions or concerns about this Privacy Policy, please contact us at
-                <a href="mailto:privacy@jtechforums.org" class="policy-link">privacy@jtechforums.org</a>.
-              </p>
-            </div>
+        <section id="rights" class="policy-section">
+          <h2 class="policy-h2">9. Your Rights</h2>
+          <div class="policy-content">
+            <ul>
+              <li>Access, portability, correction, deletion, restriction.</li>
+              <li>Withdraw consent where applicable.</li>
+              <li>No discrimination (CCPA/CPRA).</li>
+              <li>Request disclosure of categories/sources of data (CCPA/CPRA).</li>
+            </ul>
+            <p>Email requests to: <a href="mailto:privacy@jtechforums.org">privacy@jtechforums.org</a></p>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
 
-    <!-- Footer will be injected here by JavaScript -->
+        <section id="children" class="policy-section">
+          <h2 class="policy-h2">10. Children’s Privacy</h2>
+          <div class="policy-content">
+            <p>
+              JTech is not directed at children under 13. We do not knowingly collect such data. If found, it will be deleted promptly.
+            </p>
+          </div>
+        </section>
+
+        <section id="intl" class="policy-section">
+          <h2 class="policy-h2">11. International Transfers</h2>
+          <div class="policy-content">
+            <p>
+              Data may be processed outside your country. Safeguards like EU SCCs are applied to ensure adequate protection.
+            </p>
+          </div>
+        </section>
+
+        <section id="dnt" class="policy-section">
+          <h2 class="policy-h2">12. Do Not Track</h2>
+          <div class="policy-content">
+            <p>
+              We do not respond to all DNT signals at this time, as standards are not uniform. We will review if binding standards are adopted.
+            </p>
+          </div>
+        </section>
+
+        <section id="changes" class="policy-section">
+          <h2 class="policy-h2">13. Changes</h2>
+          <div class="policy-content">
+            <p>
+              We may update this policy. Significant changes will be posted here with updated “Last Updated” date.
+            </p>
+          </div>
+        </section>
+
+        <section id="contact" class="policy-section">
+          <h2 class="policy-h2">14. Contact</h2>
+          <div class="policy-content">
+            <p>
+              Questions or requests? Contact us at <a href="mailto:privacy@jtechforums.org">privacy@jtechforums.org</a>.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
     <div id="footer-container"></div>
 
-    <!-- Unified scripts -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        /* ---------------- Header & Footer ---------------- */
+        /* Header/Footer */
         fetch("/constants/headerDark.html")
           .then(r => r.text())
           .then(html => { const el = document.getElementById("header-container"); if (el) el.innerHTML = html; })
           .catch(() => {});
-
         fetch("/constants/footer.html")
           .then(r => r.text())
           .then(html => { const el = document.getElementById("footer-container"); if (el) el.innerHTML = html; })
           .catch(() => {});
+
+        /* Smooth scroll for chips */
+        const links = document.querySelectorAll('nav a[href^="#"]');
+        links.forEach(a => {
+          a.addEventListener("click", e => {
+            e.preventDefault();
+            const id = a.getAttribute("href").slice(1);
+            const el = document.getElementById(id);
+            if (!el) return;
+            window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+          });
+        });
+
+        /* Auto-hide scrollbar logic (adds/removes .show-scrollbar on <body>) */
+        let scrollHideTimer;
+        const showBar = () => {
+          document.body.classList.add('show-scrollbar');
+          clearTimeout(scrollHideTimer);
+          scrollHideTimer = setTimeout(() => {
+            document.body.classList.remove('show-scrollbar');
+          }, 800); // visible for 0.8s after last scroll/move
+        };
+
+        // Show on scroll
+        window.addEventListener('scroll', showBar, { passive: true });
+
+        // Show when mouse nears the right edge (user likely reaching for scrollbar)
+        window.addEventListener('mousemove', (e) => {
+          if (e.clientX > window.innerWidth - 24) showBar();
+        }, { passive: true });
+
+        // Show on touch interaction
+        window.addEventListener('touchstart', showBar, { passive: true });
+        window.addEventListener('touchmove', showBar, { passive: true });
+
+        // Initial brief show so users discover it
+        showBar();
       });
     </script>
   </body>
